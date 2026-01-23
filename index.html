@@ -4,59 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Buffalo Six Racing Team - Temporada 2026. Nueva generación, misma potencia. F1 in Schools México.">
+    <meta name="description" content="Buffalo Six Racing Team - Temporada 2026. Ingeniería de precisión, F1 in Schools México.">
+    <meta name="keywords" content="F1 in Schools, Racing, Engineering, Buffalo Six, 2026, STEM">
+    <meta name="theme-color" content="#181717">
     <title>Buffalo Six | 2026 Season</title>
+    
     <link rel="icon" type="image/svg+xml" href="Logo B6 Blanco Sin Fondo.svg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="loading">
 
+    <!-- Preloader System -->
     <div id="preloader">
         <div class="loader-content">
-            <img src="Logo B6 Blanco Sin Fondo.svg" alt="Loading" class="loader-logo">
-            <div class="progress-bar"><div class="progress-fill"></div></div>
-            <p class="loader-text">INITIALIZING 2026 SYSTEMS...</p>
+            <div class="loader-logo-wrapper">
+                <img src="Logo B6 Blanco Sin Fondo.svg" alt="System Load" class="loader-logo">
+            </div>
+            <div class="loader-status">
+                <span class="scramble-text">INITIALIZING SYSTEMS</span>
+                <span class="percentage">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-bar"></div>
+            </div>
+            <div class="loader-grid"></div>
         </div>
     </div>
 
-    <canvas id="bg-canvas"></canvas>
-    <div class="global-overlay"></div>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
+    <!-- Background Systems -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="noise-overlay"></div>
+    <div class="vignette"></div>
+    <div class="grid-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="brand-logo">
-                <img src="Logo B6 Blanco Sin Fondo.svg" alt="Buffalo Six Logo" class="nav-img">
-                <span class="brand-text">BUFFALO SIX</span>
+            <a href="index.html" class="brand-logo" data-cursor="hover">
+                <img src="Logo B6 Blanco Sin Fondo.svg" alt="Buffalo Six" class="nav-img">
+                <div class="brand-info">
+                    <span class="brand-text">BUFFALO SIX</span>
+                    <span class="brand-sub">RACING TEAM</span>
+                </div>
             </a>
+            
             <div class="nav-right">
                 <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html" class="nav-link active">INICIO</a></li>
-                    <li class="nav-item"><a href="identity.html" class="nav-link">IDENTIDAD</a></li>
-                    <li class="nav-item"><a href="#legacy" class="nav-link">LEGADO</a></li>
-                    <li class="nav-item"><a href="#team" class="nav-link">ESCUDERÍA</a></li>
-                    <li class="nav-item"><a href="#sponsors" class="nav-link highlight">PATROCINIO</a></li>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link active" data-cursor="hover">
+                            <span class="nav-num">01</span> INICIO
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="identity.html" class="nav-link" data-cursor="hover">
+                            <span class="nav-num">02</span> IDENTIDAD
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tech" class="nav-link" data-cursor="hover">
+                            <span class="nav-num">03</span> INGENIERÍA
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#team" class="nav-link" data-cursor="hover">
+                            <span class="nav-num">04</span> ESCUDERÍA
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#sponsors" class="nav-link highlight" data-cursor="hover">
+                            <span class="nav-num">05</span> PATROCINIO
+                        </a>
+                    </li>
                 </ul>
-                <div class="hamburger" id="hamburger">
-                    <span class="line line-1"></span>
-                    <span class="line line-2"></span>
-                    <span class="line line-3"></span>
+                
+                <div class="hamburger" id="hamburger" data-cursor="hover">
+                    <div class="hamburger-box">
+                        <span class="line line-1"></span>
+                        <span class="line line-2"></span>
+                        <span class="line line-3"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
     <div class="mobile-nav-overlay" id="mobile-nav">
+        <div class="mobile-grid-bg"></div>
         <div class="mobile-nav-content">
-            <a href="index.html" class="mobile-link">INICIO</a>
-            <a href="identity.html" class="mobile-link">IDENTIDAD</a>
-            <a href="#legacy" class="mobile-link">LEGADO 2026</a>
-            <a href="#team" class="mobile-link">ESCUDERÍA</a>
-            <a href="#sponsors" class="mobile-link">SE PARTE DEL EQUIPO</a>
+            <a href="index.html" class="mobile-link active">INICIO <span class="arr">→</span></a>
+            <a href="identity.html" class="mobile-link">IDENTIDAD <span class="arr">→</span></a>
+            <a href="#tech" class="mobile-link">INGENIERÍA <span class="arr">→</span></a>
+            <a href="#team" class="mobile-link">ESCUDERÍA <span class="arr">→</span></a>
+            <a href="#sponsors" class="mobile-link text-red">PATROCINIO <span class="arr">→</span></a>
         </div>
-        <div class="mobile-nav-bg"></div>
+        <div class="mobile-footer">
+            <span>SEASON 2026</span>
+            <span>MX</span>
+        </div>
     </div>
 
     <main>
@@ -64,55 +123,164 @@
         <header id="hero" class="section hero-section">
             <div class="container hero-container">
                 <div class="hero-content">
-                    <div class="season-tag" data-reveal="fade-down">TEMPORADA 2026</div>
+                    <div class="season-badge" data-reveal="fade-down">
+                        <span class="status-dot"></span> SEASON 2026
+                    </div>
+                    
                     <h1 class="hero-title" data-reveal="fade-up">
-                        FASTER<br><span class="text-red">THAN EVER.</span>
+                        <div class="title-row">
+                            <span class="outline-text">FASTER</span>
+                        </div>
+                        <div class="title-row">
+                            <span class="solid-text text-red">THAN EVER</span>
+                        </div>
                     </h1>
-                    <p class="hero-subtitle" data-reveal="fade-up" data-delay="200">
-                        La ingeniería evoluciona. La velocidad se redefine. Somos la nueva fuerza del búfalo.
-                    </p>
+                    
+                    <div class="hero-desc-wrapper" data-reveal="fade-up" data-delay="200">
+                        <p class="hero-subtitle scramble-text">
+                            La ingeniería evoluciona. La velocidad se redefine. Somos la nueva fuerza del búfalo.
+                        </p>
+                    </div>
+
                     <div class="hero-actions" data-reveal="fade-up" data-delay="400">
-                        <a href="identity.html" class="btn btn-primary">
-                            <span class="btn-text">NUESTRA IDENTIDAD</span>
-                            <span class="btn-icon">→</span>
+                        <a href="identity.html" class="btn btn-primary" data-cursor="hover">
+                            <span class="btn-content">
+                                <span class="btn-text">EXPLORAR ADN</span>
+                                <span class="btn-icon">→</span>
+                            </span>
+                            <div class="btn-glitch"></div>
                         </a>
-                        <a href="https://stemracing.mx/" target="_blank" class="btn btn-outline">
-                            <span class="btn-text">STEM RACING MX</span>
-                            <span class="btn-icon">↗</span>
+                        <a href="https://stemracing.mx/" target="_blank" class="btn btn-outline" data-cursor="hover">
+                            <span class="btn-content">
+                                <span class="btn-text">STEM RACING MX</span>
+                                <span class="btn-icon">↗</span>
+                            </span>
                         </a>
                     </div>
                 </div>
+
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <span class="stat-val">0.98</span>
+                        <span class="stat-lbl">AERO COEFF</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val">1050</span>
+                        <span class="stat-lbl">GRAMS</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val">20ms</span>
+                        <span class="stat-lbl">REACTION</span>
+                    </div>
+                </div>
             </div>
-            <div class="scroll-indicator">
-                <span class="mouse"><span class="wheel"></span></span>
+            
+            <div class="scroll-wrapper">
+                <span class="scroll-txt">SCROLL TO START</span>
+                <div class="scroll-line"></div>
             </div>
         </header>
 
-        <!-- Legacy / Context Section -->
+        <!-- Timeline Section -->
         <section id="legacy" class="section legacy-section">
             <div class="container">
-                <div class="split-layout">
-                    <div class="text-col" data-reveal="fade-right">
-                        <h2 class="section-title">LEGADO <span class="text-red">RENOVADO</span></h2>
-                        <div class="title-bar"></div>
-                        <p class="lead-text">Mismo nombre. Misma pasión. Nueva potencia.</p>
-                        <p>Tras dos años de historia, la primera generación de Buffalo Six ha pasado la estafeta. Ahora, seis nuevas mentes asumen el desafío en 2026.</p>
-                        <p>No somos novatos en ambición. Heredamos una identidad ganadora y la hemos optimizado con un único objetivo: <strong>GANAR.</strong></p>
+                <div class="section-header">
+                    <span class="section-tag">HISTORIA</span>
+                    <h2 class="section-title">NUESTRO <span class="text-red">LEGADO</span></h2>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-item" data-reveal="fade-right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024</div>
+                        <div class="timeline-content">
+                            <h3>EL ORIGEN</h3>
+                            <p>Nace Buffalo Six en Altamira. Primera participación estableciendo las bases de la ingeniería y marketing.</p>
+                        </div>
                     </div>
-                    <div class="visual-col center-content" data-reveal="fade-left">
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <span class="stat-number">2026</span>
-                                <span class="stat-label">TEMPORADA</span>
+
+                    <div class="timeline-item" data-reveal="fade-left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2025</div>
+                        <div class="timeline-content">
+                            <h3>CONSOLIDACIÓN</h3>
+                            <p>El equipo logra reconocimiento regional. Se perfecciona la identidad visual y técnica.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item highlight" data-reveal="fade-right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date text-red">2026</div>
+                        <div class="timeline-content">
+                            <h3>NUEVA ERA</h3>
+                            <p>Cambio generacional completo. Nuevas mentes, tecnología avanzada y un objetivo claro: el campeonato nacional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Specs Section -->
+        <section id="tech" class="section tech-section">
+            <div class="tech-grid-bg"></div>
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-tag">INGENIERÍA</span>
+                    <h2 class="section-title">PRECISIÓN <span class="text-red">TÉCNICA</span></h2>
+                </div>
+
+                <div class="tech-interface" data-reveal="zoom-in">
+                    <!-- Placeholder Visual for Car -->
+                    <div class="car-wireframe-container">
+                        <div class="car-placeholder-visual">
+                            <div class="tech-circle-anim"></div>
+                            <span class="visual-text">B6-26 CHASSIS</span>
+                        </div>
+                        
+                        <!-- Hotspots -->
+                        <div class="hotspot hs-1" data-cursor="hover">
+                            <div class="hs-point"></div>
+                            <div class="hs-tooltip">
+                                <h4>ALERÓN DELANTERO</h4>
+                                <p>Diseño multi-elemento para maximizar downforce.</p>
                             </div>
-                            <div class="stat-item">
-                                <span class="stat-number">06</span>
-                                <span class="stat-label">MIEMBROS</span>
+                        </div>
+                        
+                        <div class="hotspot hs-2" data-cursor="hover">
+                            <div class="hs-point"></div>
+                            <div class="hs-tooltip">
+                                <h4>CUERPO PRINCIPAL</h4>
+                                <p>Poliuretano de alta densidad maquinado en CNC.</p>
                             </div>
-                            <div class="stat-item">
-                                <span class="stat-number">100%</span>
-                                <span class="stat-label">ENFOQUE</span>
+                        </div>
+                        
+                        <div class="hotspot hs-3" data-cursor="hover">
+                            <div class="hs-point"></div>
+                            <div class="hs-tooltip">
+                                <h4>SISTEMA DE RODAMIENTO</h4>
+                                <p>Cerámica híbrida para mínima fricción.</p>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="tech-data-panel">
+                        <div class="data-row">
+                            <span>MATERIAL</span>
+                            <span class="data-val text-red">POLYURETHANE</span>
+                        </div>
+                        <div class="data-row">
+                            <span>MACHINING</span>
+                            <span class="data-val">5-AXIS CNC</span>
+                        </div>
+                        <div class="data-row">
+                            <span>CFD ITERATIONS</span>
+                            <span class="data-val">500+</span>
+                        </div>
+                        <div class="data-bar-group">
+                            <span>DRAG REDUCTION</span>
+                            <div class="tech-bar"><div class="fill" style="width: 92%"></div></div>
                         </div>
                     </div>
                 </div>
@@ -122,167 +290,241 @@
         <!-- Team Section -->
         <section id="team" class="section team-section">
             <div class="container">
-                <div class="section-header center">
-                    <h2 class="section-title" data-reveal="fade-up">LA <span class="text-red">ESCUDERÍA</span></h2>
-                    <p class="section-desc" data-reveal="fade-up">Cada rol es vital para la victoria.</p>
+                <div class="section-header">
+                    <span class="section-tag">ROSTER</span>
+                    <h2 class="section-title">LA <span class="text-red">ESCUDERÍA</span></h2>
                 </div>
 
                 <div class="team-grid">
                     <!-- Luis -->
-                    <div class="member-card" data-reveal="fade-up" data-delay="0">
-                        <div class="card-header">
-                            <span class="role-badge">DESIGN ENGINEER</span>
-                            <h3 class="member-name">LUIS<br>MONTOYA</h3>
+                    <div class="member-card" data-reveal="fade-up">
+                        <div class="member-photo-area">
+                            <div class="initials-bg">LM</div>
+                            <div class="member-overlay"></div>
                         </div>
-                        <div class="card-body">
-                            <p>Responsable del diseño CAD y optimización aerodinámica. Transforma las leyes de la física en velocidad pura a través del túnel de viento virtual.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tech-lines-small"></div>
+                        <div class="member-content">
+                            <div class="member-header">
+                                <span class="role">DESIGN ENGINEER</span>
+                                <h3 class="name">LUIS<br>MONTOYA</h3>
+                            </div>
+                            <div class="member-bio">
+                                <p>Arquitecto del flujo de aire. Encargado de transformar las físicas en velocidad pura.</p>
+                            </div>
+                            <div class="member-stats">
+                                <span>CAD</span>
+                                <span>CFD</span>
+                                <span>AERO</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Alexter -->
                     <div class="member-card" data-reveal="fade-up" data-delay="100">
-                        <div class="card-header">
-                            <span class="role-badge">MANUFACTURE ENGINEER</span>
-                            <h3 class="member-name">ALEXTER<br>LÓPEZ</h3>
+                        <div class="member-photo-area">
+                            <div class="initials-bg">AL</div>
+                            <div class="member-overlay"></div>
                         </div>
-                        <div class="card-body">
-                            <p>Maestro del CNC y materiales. Convierte los modelos digitales en realidad tangible con tolerancias milimétricas para la pista.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tech-lines-small"></div>
+                        <div class="member-content">
+                            <div class="member-header">
+                                <span class="role">MANUFACTURE ENGINEER</span>
+                                <h3 class="name">ALEXTER<br>LÓPEZ</h3>
+                            </div>
+                            <div class="member-bio">
+                                <p>Maestro de la precisión. Materializa los diseños digitales con tolerancias de micras.</p>
+                            </div>
+                            <div class="member-stats">
+                                <span>CAM</span>
+                                <span>CNC</span>
+                                <span>R&D</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Isaac -->
                     <div class="member-card" data-reveal="fade-up" data-delay="200">
-                        <div class="card-header">
-                            <span class="role-badge">MARKETING</span>
-                            <h3 class="member-name">ISAAC<br>QUINTERO</h3>
+                        <div class="member-photo-area">
+                            <div class="initials-bg">IQ</div>
+                            <div class="member-overlay"></div>
                         </div>
-                        <div class="card-body">
-                            <p>La voz del equipo. Gestiona la estrategia de redes, patrocinios y asegura que la marca Buffalo Six resuene en todo México.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tech-lines-small"></div>
+                        <div class="member-content">
+                            <div class="member-header">
+                                <span class="role">MARKETING MANAGER</span>
+                                <h3 class="name">ISAAC<br>QUINTERO</h3>
+                            </div>
+                            <div class="member-bio">
+                                <p>La voz de la marca. Estratega de comunicación y gestión de patrocinadores.</p>
+                            </div>
+                            <div class="member-stats">
+                                <span>PR</span>
+                                <span>SOCIAL</span>
+                                <span>BIZ</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Alejandro -->
-                    <div class="member-card" data-reveal="fade-up" data-delay="0">
-                        <div class="card-header">
-                            <span class="role-badge">FINANZAS</span>
-                            <h3 class="member-name">ALEJANDRO<br>CHACÓN</h3>
+                    <div class="member-card" data-reveal="fade-up">
+                        <div class="member-photo-area">
+                            <div class="initials-bg">AC</div>
+                            <div class="member-overlay"></div>
                         </div>
-                        <div class="card-body">
-                            <p>Estratega de recursos. Asegura la viabilidad económica del proyecto, gestionando presupuestos y retorno de inversión.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tech-lines-small"></div>
+                        <div class="member-content">
+                            <div class="member-header">
+                                <span class="role">FINANCE DIRECTOR</span>
+                                <h3 class="name">ALEJANDRO<br>CHACÓN</h3>
+                            </div>
+                            <div class="member-bio">
+                                <p>Guardián de los recursos. Asegura la viabilidad y rentabilidad del proyecto.</p>
+                            </div>
+                            <div class="member-stats">
+                                <span>ROI</span>
+                                <span>BUDGET</span>
+                                <span>MGMT</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Carlos -->
                     <div class="member-card" data-reveal="fade-up" data-delay="100">
-                        <div class="card-header">
-                            <span class="role-badge">PROJECT MANAGER</span>
-                            <h3 class="member-name">CARLOS<br>HIGUERA</h3>
+                        <div class="member-photo-area">
+                            <div class="initials-bg">CH</div>
+                            <div class="member-overlay"></div>
                         </div>
-                        <div class="card-body">
-                            <p>El líder organizativo. Coordina cronogramas, entregables y mantiene al equipo sincronizado hacia la meta final.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tech-lines-small"></div>
+                        <div class="member-content">
+                            <div class="member-header">
+                                <span class="role">PROJECT MANAGER</span>
+                                <h3 class="name">CARLOS<br>HIGUERA</h3>
+                            </div>
+                            <div class="member-bio">
+                                <p>El eje central. Sincroniza talentos y tiempos para cruzar la meta.</p>
+                            </div>
+                            <div class="member-stats">
+                                <span>LEAD</span>
+                                <span>PLAN</span>
+                                <span>ORG</span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Luca -->
                     <div class="member-card" data-reveal="fade-up" data-delay="200">
-                        <div class="card-header">
-                            <span class="role-badge">GRAPHIC DESIGNER</span>
-                            <h3 class="member-name">LUCA<br>LÓPEZ</h3>
+                        <div class="member-photo-area">
+                            <div class="initials-bg">LL</div>
+                            <div class="member-overlay"></div>
                         </div>
-                        <div class="card-body">
-                            <p>Arquitecto visual. Crea desde el logotipo hasta la estética del stand y uniformes, definiendo nuestra imagen premium.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="tech-lines-small"></div>
+                        <div class="member-content">
+                            <div class="member-header">
+                                <span class="role">GRAPHIC DESIGNER</span>
+                                <h3 class="name">LUCA<br>LÓPEZ</h3>
+                            </div>
+                            <div class="member-bio">
+                                <p>Visionario estético. Crea la identidad visual agresiva y elegante del equipo.</p>
+                            </div>
+                            <div class="member-stats">
+                                <span>UX/UI</span>
+                                <span>BRAND</span>
+                                <span>ART</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sponsorship Section -->
-        <section id="sponsors" class="section sponsorship-section">
+        <!-- Sponsors Section -->
+        <section id="sponsors" class="section sponsor-section">
             <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">ÚNETE AL <span class="text-red">PADDOCK</span></h2>
-                    <p class="section-desc">Tu marca a 80km/h en la competencia STEM más importante.</p>
-                </div>
+                <div class="sponsor-layout">
+                    <div class="sponsor-text" data-reveal="fade-right">
+                        <span class="section-tag">PARTNERS</span>
+                        <h2 class="section-title">IMPULSA LA <span class="text-red">VELOCIDAD</span></h2>
+                        <p class="sponsor-desc">
+                            Tu marca en el escenario STEM más importante. Ofrecemos exposición de alto impacto, deducibilidad fiscal y asociación con innovación tecnológica.
+                        </p>
+                        
+                        <div class="sponsor-tiers">
+                            <div class="tier">
+                                <div class="tier-head platinum">PLATINUM</div>
+                                <p>Presencia dominante en el auto y uniformes.</p>
+                            </div>
+                            <div class="tier">
+                                <div class="tier-head gold">GOLD</div>
+                                <p>Visibilidad estratégica en zonas clave.</p>
+                            </div>
+                            <div class="tier">
+                                <div class="tier-head silver">SILVER</div>
+                                <p>Apoyo esencial con presencia en pit display.</p>
+                            </div>
+                        </div>
 
-                <div class="steps-container">
-                    <div class="step" data-reveal="fade-up">
-                        <div class="step-number">01</div>
-                        <h3>CONTACTO</h3>
-                        <p>Escríbenos a nuestro correo oficial o redes sociales mostrando tu interés.</p>
+                        <a href="mailto:f1buffalosix@altamira.edu.mx" class="btn btn-primary" data-cursor="hover">
+                            <span class="btn-text">SOLICITAR MEDIA KIT</span>
+                        </a>
                     </div>
-                    <div class="step-connector"></div>
-                    <div class="step" data-reveal="fade-up" data-delay="150">
-                        <div class="step-number">02</div>
-                        <h3>PROPUESTA</h3>
-                        <p>Te presentamos nuestro Portafolio de Inversión y beneficios fiscales/visuales.</p>
-                    </div>
-                    <div class="step-connector"></div>
-                    <div class="step" data-reveal="fade-up" data-delay="300">
-                        <div class="step-number">03</div>
-                        <h3>ALIANZA</h3>
-                        <p>Formalizamos la colaboración y tu logo entra en nuestro monoplaza 2026.</p>
-                    </div>
-                </div>
 
-                <div class="cta-box center" data-reveal="zoom-in">
-                    <h3>¿LISTO PARA ACELERAR CON NOSOTROS?</h3>
-                    <a href="mailto:f1buffalosix@altamira.edu.mx" class="btn btn-primary big-btn">
-                        ENVIAR CORREO OFICIAL
-                    </a>
-                    <p class="email-text">f1buffalosix@altamira.edu.mx</p>
+                    <div class="sponsor-steps" data-reveal="fade-left">
+                        <div class="step-card">
+                            <span class="step-num">01</span>
+                            <h4>CONTACTO</h4>
+                            <p>Envía tu interés oficial.</p>
+                        </div>
+                        <div class="step-line"></div>
+                        <div class="step-card">
+                            <span class="step-num">02</span>
+                            <h4>PROPUESTA</h4>
+                            <p>Análisis de ROI y beneficios.</p>
+                        </div>
+                        <div class="step-line"></div>
+                        <div class="step-card">
+                            <span class="step-num">03</span>
+                            <h4>FIRMA</h4>
+                            <p>Tu logo en nuestro monoplaza.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
         <footer class="footer">
-            <div class="footer-top-border"></div>
+            <div class="footer-bg-grid"></div>
             <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-col brand-col">
-                        <img src="Logo B6 Blanco Sin Fondo.svg" alt="Buffalo Six" class="footer-logo">
-                        <p class="footer-mission">Faster than ever.</p>
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <img src="Logo B6 Blanco Sin Fondo.svg" alt="Footer Logo" class="footer-logo">
+                        <p class="footer-slogan scramble-text">FASTER THAN EVER.</p>
                     </div>
                     
-                    <div class="footer-col social-col">
-                        <h4>REDES SOCIALES</h4>
-                        <div class="social-links-grid">
-                            <a href="https://www.instagram.com/f1buffalosix/" target="_blank" class="social-link ig">INSTAGRAM</a>
-                            <a href="https://www.linkedin.com/in/buffalo-six-racing-team/?originalSubdomain=mx" target="_blank" class="social-link ln">LINKEDIN</a>
-                            <a href="https://www.facebook.com/profile.php?id=61553670977396" target="_blank" class="social-link fb">FACEBOOK</a>
-                            <a href="https://www.tiktok.com/@f1buffalosix" target="_blank" class="social-link tk">TIKTOK</a>
-                        </div>
+                    <div class="footer-nav">
+                        <h4>NAVEGACIÓN</h4>
+                        <ul>
+                            <li><a href="index.html" data-cursor="hover">Inicio</a></li>
+                            <li><a href="identity.html" data-cursor="hover">Identidad</a></li>
+                            <li><a href="#team" data-cursor="hover">Equipo</a></li>
+                            <li><a href="#sponsors" data-cursor="hover">Sponsors</a></li>
+                        </ul>
                     </div>
                     
-                    <div class="footer-col contact-col">
+                    <div class="footer-contact">
                         <h4>CONTACTO</h4>
-                        <p>f1buffalosix@altamira.edu.mx</p>
-                        <p>Guadalajara, México</p>
-                        <a href="https://stemracing.mx/" target="_blank" class="stem-link">Visitar STEM Racing MX</a>
+                        <a href="mailto:f1buffalosix@altamira.edu.mx" class="contact-link" data-cursor="hover">f1buffalosix@altamira.edu.mx</a>
+                        <p>Guadalajara, Jalisco, México</p>
+                    </div>
+                    
+                    <div class="footer-social">
+                        <h4>SÍGUENOS</h4>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/f1buffalosix/" target="_blank" class="s-icon" data-cursor="hover">IG</a>
+                            <a href="https://www.linkedin.com/in/buffalo-six-racing-team/?originalSubdomain=mx" target="_blank" class="s-icon" data-cursor="hover">IN</a>
+                            <a href="https://www.facebook.com/profile.php?id=61553670977396" target="_blank" class="s-icon" data-cursor="hover">FB</a>
+                            <a href="https://www.tiktok.com/@f1buffalosix" target="_blank" class="s-icon" data-cursor="hover">TK</a>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="footer-bottom">
-                    <div class="copyright">&copy; 2026 BUFFALO SIX RACING TEAM.</div>
+                    <p>&copy; 2026 BUFFALO SIX RACING TEAM.</p>
+                    <a href="https://stemracing.mx/" target="_blank" class="stem-ref" data-cursor="hover">OFFICIAL STEM RACING PARTICIPANT</a>
                 </div>
             </div>
         </footer>
