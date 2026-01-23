@@ -4,120 +4,262 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Identidad | Buffalo Six</title>
+    <title>Identidad Visual | Buffalo Six</title>
     <link rel="icon" type="image/svg+xml" href="Logo B6 Blanco Sin Fondo.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="subpage">
 
-    <canvas id="bg-canvas"></canvas>
-    <div class="global-overlay"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
+    <canvas id="bg-canvas"></canvas>
+    <div class="grid-lines light">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <!-- Nav (Same as Index) -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="brand-logo">
-                <img src="Logo B6 Blanco Sin Fondo.svg" alt="Logo" class="nav-img">
+            <a href="index.html" class="brand-logo" data-cursor="hover">
+                <img src="Logo B6 Blanco Sin Fondo.svg" alt="Buffalo Six" class="nav-img">
                 <span class="brand-text">BUFFALO SIX</span>
             </a>
             <div class="nav-right">
                 <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html" class="nav-link">INICIO</a></li>
-                    <li class="nav-item"><a href="identity.html" class="nav-link active">IDENTIDAD</a></li>
-                    <li class="nav-item"><a href="index.html#team" class="nav-link">ESCUDERÍA</a></li>
-                    <li class="nav-item"><a href="index.html#sponsors" class="nav-link">PATROCINIO</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link" data-cursor="hover">01 INICIO</a></li>
+                    <li class="nav-item"><a href="identity.html" class="nav-link active" data-cursor="hover">02 IDENTIDAD</a></li>
+                    <li class="nav-item"><a href="index.html#team" class="nav-link" data-cursor="hover">03 ESCUDERÍA</a></li>
+                    <li class="nav-item"><a href="index.html#sponsors" class="nav-link" data-cursor="hover">04 PATROCINIO</a></li>
                 </ul>
-                <div class="hamburger" id="hamburger">
-                    <span class="line line-1"></span>
-                    <span class="line line-2"></span>
-                    <span class="line line-3"></span>
+                <div class="hamburger" id="hamburger" data-cursor="hover">
+                    <div class="hamburger-box"><span class="line line-1"></span><span class="line line-2"></span><span class="line line-3"></span></div>
                 </div>
             </div>
         </div>
     </nav>
-    
-    <!-- Mobile Menu duplicate for subpage -->
+
     <div class="mobile-nav-overlay" id="mobile-nav">
         <div class="mobile-nav-content">
-            <a href="index.html" class="mobile-link">INICIO</a>
-            <a href="identity.html" class="mobile-link">IDENTIDAD</a>
-            <a href="index.html#team" class="mobile-link">ESCUDERÍA</a>
+            <a href="index.html" class="mobile-link">INICIO <span class="arr">→</span></a>
+            <a href="identity.html" class="mobile-link active">IDENTIDAD <span class="arr">→</span></a>
+            <a href="index.html#team" class="mobile-link">ESCUDERÍA <span class="arr">→</span></a>
         </div>
-        <div class="mobile-nav-bg"></div>
     </div>
 
     <main>
-        <section class="section header-subpage">
-            <div class="container center">
-                <h1 class="page-title" data-reveal="fade-down">NUESTRO <span class="text-red">ADN</span></h1>
-                <p class="page-subtitle" data-reveal="fade-up">Consistencia. Adaptabilidad. Funcionalidad.</p>
-            </div>
-        </section>
-
-        <section class="section">
+        <!-- Identity Header -->
+        <header class="section identity-header">
             <div class="container">
-                <div class="split-layout reverse-mobile">
-                    <div class="visual-col center-content" data-reveal="zoom-in">
-                        <img src="Logo B6 Blanco Sin Fondo.svg" alt="Logo Big" class="identity-hero-logo">
-                    </div>
-                    <div class="text-col" data-reveal="fade-left">
+                <div class="id-head-content">
+                    <span class="page-tag" data-reveal="fade-down">BRAND GUIDELINES 2026</span>
+                    <h1 class="page-title scramble-text" data-reveal="fade-up">ADN VISUAL</h1>
+                    <p class="page-desc" data-reveal="fade-up" data-delay="100">
+                        Sistemas gráficos diseñados para comunicar velocidad, precisión y fuerza.
+                        <br>Consistencia. Adaptabilidad. Funcionalidad.
+                    </p>
+                </div>
+            </div>
+            <div class="header-grid-bg"></div>
+        </header>
+
+        <!-- Concept Section -->
+        <section class="section concept-section">
+            <div class="container">
+                <div class="concept-grid">
+                    <div class="concept-text" data-reveal="fade-right">
                         <h2 class="section-title">EL NOMBRE</h2>
                         <div class="title-bar"></div>
-                        <p>"Buffalo" proviene de la mascota de nuestro colegio, un símbolo de fuerza bruta y resistencia con el que nos identificamos.</p>
-                        <p>"Six" no es solo un número; representa a los 6 integrantes trabajando como un engranaje perfecto. El nombre surgió por necesidad estratégica, pero se convirtió en nuestra bandera.</p>
+                        <div class="concept-block">
+                            <h4>BUFFALO</h4>
+                            <p>Herencia y fuerza bruta. Nacido de la mascota de nuestro colegio, representa la resistencia inquebrantable y el empuje constante hacia adelante.</p>
+                        </div>
+                        <div class="concept-block">
+                            <h4>SIX</h4>
+                            <p>Unidad técnica. Seis integrantes, seis disciplinas, un solo sistema integrado funcionando en perfecta armonía mecánica.</p>
+                        </div>
+                    </div>
+                    <div class="concept-visual" data-reveal="zoom-in">
+                        <div class="logo-construction">
+                            <img src="Logo B6 Blanco Sin Fondo.svg" alt="Logo Construction" class="main-logo-construct">
+                            <!-- Construction Lines Overlay (CSS) -->
+                            <div class="const-line v-center"></div>
+                            <div class="const-line h-center"></div>
+                            <div class="const-circle"></div>
+                        </div>
+                        <span class="caption">FIG 1.0 - LOGOTIPO PRINCIPAL</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section color-section">
+        <!-- Color Palette -->
+        <section class="section palette-section">
             <div class="container">
-                <h2 class="section-title center" data-reveal="fade-up">PALETA DE COLORES</h2>
-                <div class="color-grid">
-                    <div class="color-card black" data-reveal="fade-up">
-                        <div class="color-swatch" style="background: #181717;"></div>
-                        <div class="color-info">
-                            <h4>RACING BLACK</h4>
-                            <span>#181717</span>
-                            <p>Elegancia, profesionalismo y contraste.</p>
+                <h2 class="section-title center" data-reveal="fade-up">PALETA CROMÁTICA</h2>
+                <div class="palette-grid">
+                    <div class="color-swatch-large black" data-reveal="fade-up">
+                        <div class="swatch-header">
+                            <span>PRIMARY</span>
+                            <span class="hex">#181717</span>
+                        </div>
+                        <div class="swatch-body">
+                            <h3>RACING BLACK</h3>
+                            <p>La base de nuestra elegancia. Aporta contraste máximo y seriedad profesional.</p>
+                        </div>
+                        <div class="cmyk-val">C:0 M:0 Y:0 K:90</div>
+                    </div>
+
+                    <div class="color-swatch-large red" data-reveal="fade-up" data-delay="100">
+                        <div class="swatch-header">
+                            <span>ACCENT</span>
+                            <span class="hex">#CA130F</span>
+                        </div>
+                        <div class="swatch-body">
+                            <h3>BUFFALO RED</h3>
+                            <p>Energía cinética. Usado para guiar la vista y resaltar puntos de acción.</p>
+                        </div>
+                        <div class="cmyk-val">C:0 M:95 Y:100 K:0</div>
+                    </div>
+
+                    <div class="color-swatch-large white" data-reveal="fade-up" data-delay="200">
+                        <div class="swatch-header">
+                            <span>NEUTRAL</span>
+                            <span class="hex">#FFFFFF</span>
+                        </div>
+                        <div class="swatch-body">
+                            <h3>PURE WHITE</h3>
+                            <p>Claridad técnica. Legibilidad absoluta en entornos de alta velocidad.</p>
+                        </div>
+                        <div class="cmyk-val">C:0 M:0 Y:0 K:0</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Section -->
+        <section class="section typo-section">
+            <div class="container">
+                <div class="split-layout">
+                    <div class="typo-info" data-reveal="fade-right">
+                        <h2 class="section-title">TIPOGRAFÍA</h2>
+                        
+                        <div class="font-block">
+                            <span class="font-tag">DISPLAY</span>
+                            <h3 class="font-name font-primary">ETHNOCENTRIC</h3>
+                            <p>Usada para titulares y logotipos. Transmite futurismo y estructura tecnológica.</p>
+                            <div class="abc">ABCDEFGHIJKLMN 0123456789</div>
+                        </div>
+
+                        <div class="font-block">
+                            <span class="font-tag">BODY / TEXT</span>
+                            <h3 class="font-name font-secondary">FORMULA 1</h3>
+                            <p>Alta legibilidad. Usada para cuerpos de texto y datos técnicos.</p>
+                            <div class="abc font-secondary">Aa Bb Cc Dd Ee Ff Gg 012345</div>
                         </div>
                     </div>
-                    <div class="color-card red" data-reveal="fade-up" data-delay="100">
-                        <div class="color-swatch" style="background: #CA130F;"></div>
-                        <div class="color-info">
-                            <h4>BUFFALO RED</h4>
-                            <span>#CA130F</span>
-                            <p>Pasión, energía y alerta visual.</p>
-                        </div>
-                    </div>
-                    <div class="color-card white" data-reveal="fade-up" data-delay="200">
-                        <div class="color-swatch" style="background: #FFFFFF;"></div>
-                        <div class="color-info">
-                            <h4>PURE WHITE</h4>
-                            <span>#FFFFFF</span>
-                            <p>Limpieza y claridad técnica.</p>
+                    
+                    <div class="typo-tester" data-reveal="fade-left">
+                        <div class="tester-window">
+                            <div class="window-head">TYPE_TEST.EXE</div>
+                            <div class="window-body">
+                                <h2 class="scramble-text">FASTER THAN EVER</h2>
+                                <p>La evolución técnica ha llegado. 2026.</p>
+                                <div class="glyph-grid">
+                                    <span>A</span><span>B</span><span>C</span><span>6</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section philosophy-section">
+        <!-- Graphic Elements -->
+        <section class="section graphics-section">
+            <div class="container">
+                <h2 class="section-title center">ELEMENTOS GRÁFICOS</h2>
+                <div class="elements-grid">
+                    <div class="element-card" data-reveal="fade-up">
+                        <div class="el-visual pattern-bg"></div>
+                        <h4>HALFTONE PATTERN</h4>
+                        <p>Textura de degradado técnico.</p>
+                    </div>
+                    <div class="element-card" data-reveal="fade-up" data-delay="100">
+                        <div class="el-visual arrow-bg">
+                            <div class="arrow-shape"></div>
+                            <div class="arrow-shape"></div>
+                            <div class="arrow-shape"></div>
+                        </div>
+                        <h4>SPEED ARROWS</h4>
+                        <p>Direccionalidad y movimiento.</p>
+                    </div>
+                    <div class="element-card" data-reveal="fade-up" data-delay="200">
+                        <div class="el-visual logo-bg">
+                            <span class="logo-mark">B6</span>
+                        </div>
+                        <h4>MONOGRAMA</h4>
+                        <p>Versión reducida para espacios pequeños.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Livery/Uniform Preview -->
+        <section class="section livery-section">
             <div class="container center">
-                <h2 class="section-title">FILOSOFÍA DE DISEÑO</h2>
-                <div class="philosophy-box" data-reveal="fade-up">
-                    <p class="quote">"Usamos una estética moderna, técnica y simple. Diseñada para resaltar lo importante sin saturar."</p>
-                    <p>En la pista y en nuestra identidad, evitamos el adorno innecesario. Cada línea, cada curva y cada color tiene un propósito funcional. Nuestra tipografía principal, <strong>Ethnocentric</strong> (simulada aquí), transmite la velocidad futurista que buscamos alcanzar en 2026.</p>
+                <h2 class="section-title">APLICACIÓN 2026</h2>
+                <p class="section-desc">Visualización del sistema de identidad en activos físicos.</p>
+                
+                <div class="livery-showcase" data-reveal="zoom-in">
+                    <div class="livery-card">
+                        <div class="livery-mockup">
+                            <div class="mockup-rect car-rect">
+                                <span class="mockup-label">CAR LIVERY CONCEPT</span>
+                                <div class="car-graphic"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="livery-card">
+                        <div class="livery-mockup">
+                            <div class="mockup-rect kit-rect">
+                                <span class="mockup-label">TEAM KIT CONCEPT</span>
+                                <div class="kit-graphic"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads / CTA -->
+        <section class="section downloads-section">
+            <div class="container">
+                <div class="dl-box">
+                    <div class="dl-text">
+                        <h3>MEDIA KIT 2026</h3>
+                        <p>Acceso a logotipos en alta resolución, manual de marca y fotos oficiales para prensa.</p>
+                    </div>
+                    <div class="dl-action">
+                        <button class="btn btn-outline" data-cursor="hover">
+                            <span class="btn-text">DESCARGAR ASSETS (.ZIP)</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
 
         <footer class="footer">
             <div class="container center">
+                <img src="Logo B6 Blanco Sin Fondo.svg" alt="Footer Logo" class="footer-logo-small">
                 <p class="copyright">&copy; 2026 BUFFALO SIX RACING TEAM.</p>
             </div>
         </footer>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
