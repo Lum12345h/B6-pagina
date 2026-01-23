@@ -1,38 +1,171 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Preloader (Only runs if element exists) ---
+    // --- 1. SYSTEM LOADER & SCRAMBLE TEXT ---
     const preloader = document.getElementById('preloader');
+    const scrambleTexts = document.querySelectorAll('.scramble-text');
+    
+    // Characters for hacker effect
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
+
+    class Scrambler {
+        constructor(el) {
+            this.el = el;
+            this.originalText = el.innerText;
+            this.update = this.update.bind(this);
+        }
+        
+        start() {
+            this.frame = 0;
+            this.queue = [];
+            for (let i = 0; i < this.originalText.length; i++) {
+                const from = this.originalText[i];
+                const to = this.originalText[i];
+                const start = Math.floor(Math.random() * 20);
+                const end = start + Math.floor(Math.random() * 20);
+                this.queue.push({ from, to, start, end });
+            }
+            cancelAnimationFrame(this.frameRequest);
+            this.frame = 0;
+            this.update();
+            return this;
+        }
+        
+        update() {
+            let output = '';
+            let complete = 0;
+            for (let i = 0; i < this.queue.length; i++) {
+                let { from, to, start, end, char } = this.queue[i];
+                if (this.frame >= end) {
+                    complete++;
+                    output += to;
+                } else if (this.frame >= start) {
+                    if (!char || Math.random() < 0.28) {
+                        char = chars[Math.floor(Math.random() * chars.length)];
+                        this.queue[i].char = char;
+                    }
+                    output += `<span class="dud">${char}</span>`;
+                } else {
+                    output += from;
+                }
+            }
+            this.el.innerHTML = output;
+            if (complete === this.queue.length) {
+                // Done
+            } else {
+                this.frameRequest = requestAnimationFrame(this.update);
+                this.frame++;
+            }
+        }
+    }
+
+    // Initialize Preloader
     if(preloader) {
-        const progressBar = document.querySelector('.progress-fill');
+        const bar = document.querySelector('.progress-bar');
+        const percent = document.querySelector('.percentage');
         let load = 0;
+
         const interval = setInterval(() => {
-            load += Math.random() * 20;
+            load += Math.random() * 5;
             if(load > 100) load = 100;
-            progressBar.style.width = `${load}%`;
             
+            if(bar) bar.style.width = `${load}%`;
+            if(percent) percent.innerText = `${Math.floor(load)}%`;
+
             if(load === 100) {
                 clearInterval(interval);
+                // Trigger Text Scrambles
+                scrambleTexts.forEach(el => {
+                    new Scrambler(el).start();
+                });
+                
                 setTimeout(() => {
                     preloader.style.opacity = '0';
-                    setTimeout(() => preloader.remove(), 500);
-                    document.body.classList.remove('loading');
-                }, 500);
+                    setTimeout(() => {
+                        preloader.remove();
+                        document.body.classList.remove('loading');
+                    }, 500);
+                }, 800);
             }
-        }, 150);
+        }, 50);
     } else {
         document.body.classList.remove('loading');
     }
 
-    // --- Mobile Menu ---
+    // --- 2. CUSTOM CURSOR ---
+    const dot = document.querySelector('.cursor-dot');
+    const outline = document.querySelector('.cursor-outline');
+    
+    // Check if device supports hover (desktop)
+    if (window.matchMedia("(pointer: fine)").matches) {
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            // Dot follows instantly
+            dot.style.left = `${posX}px`;
+            dot.style.top = `${posY}px`;
+            
+            // Outline follows with lag (handled by CSS transition or simple JS)
+            // Using simple JS for smooth trailing
+            outline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Interactive Elements Hover
+        const interactives = document.querySelectorAll('a, button, .hamburger, .hotspot, .member-card');
+        interactives.forEach(el => {
+            el.addEventListener('mouseenter', () => outline.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => outline.classList.remove('hovered'));
+        });
+    } else {
+        if(dot) dot.style.display = 'none';
+        if(outline) outline.style.display = 'none';
+    }
+
+    // --- 3. SCROLL REVEAL (Intersection Observer) ---
+    const revealElements = document.querySelectorAll('[data-reveal]');
+    const observerConfig = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const delay = entry.target.dataset.delay || 0;
+                setTimeout(() => {
+                    entry.target.classList.add('reveal-active');
+                    // Retrigger scramble if inside
+                    const innerScramble = entry.target.querySelector('.scramble-text');
+                    if(innerScramble) new Scrambler(innerScramble).start();
+                }, delay);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerConfig);
+
+    revealElements.forEach(el => observer.observe(el));
+
+    // --- 4. NAVIGATION LOGIC ---
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobile-nav');
     const mobileLinks = document.querySelectorAll('.mobile-link');
+    const navbar = document.getElementById('navbar');
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-    });
+    if(hamburger) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+    }
 
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -42,98 +175,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Navbar Scroll Effect ---
-    const navbar = document.getElementById('navbar');
+    // Sticky Nav
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) navbar.style.background = 'rgba(24, 23, 23, 0.98)';
-        else navbar.style.background = 'rgba(24, 23, 23, 0.8)';
+        if (window.scrollY > 50) navbar.style.background = 'rgba(24,23,23,0.95)';
+        else navbar.style.background = 'rgba(24,23,23,0.8)';
     });
 
-    // --- Scroll Reveal Animations ---
-    const reveals = document.querySelectorAll('[data-reveal]');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                const delay = entry.target.dataset.delay || 0;
-                setTimeout(() => {
-                    entry.target.classList.add('reveal-active');
-                }, delay);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-
-    reveals.forEach(el => observer.observe(el));
-
-    // --- Background Canvas Animation ---
+    // --- 5. TECH SECTION INTERACTION (Simple Tabs/Visuals) ---
+    // (Optional: Add click logic for hotspots if detailed info is needed elsewhere)
+    
+    // --- 6. BACKGROUND CANVAS (Simplified Particles) ---
     const canvas = document.getElementById('bg-canvas');
     if(canvas) {
         const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
 
-        function resize() {
+        const particles = [];
+        const particleCount = 40;
+
+        for(let i=0; i<particleCount; i++){
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 2
+            });
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0,0,width,height);
+            ctx.fillStyle = 'rgba(255,255,255,0.2)';
+            
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                
+                if(p.x < 0) p.x = width;
+                if(p.x > width) p.x = 0;
+                if(p.y < 0) p.y = height;
+                if(p.y > height) p.y = 0;
+                
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+        
+        animateCanvas();
+        window.addEventListener('resize', () => {
             width = window.innerWidth;
             height = window.innerHeight;
             canvas.width = width;
             canvas.height = height;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2;
-            }
-            update() {
-                this.x += this.vx; this.y += this.vy;
-                if(this.x < 0) this.x = width;
-                if(this.x > width) this.x = 0;
-                if(this.y < 0) this.y = height;
-                if(this.y > height) this.y = 0;
-            }
-            draw() {
-                ctx.fillStyle = 'rgba(255,255,255,0.3)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            particles = [];
-            for(let i=0; i<50; i++) particles.push(new Particle());
-        }
-
-        function animate() {
-            ctx.clearRect(0,0,width,height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            // Draw lines
-            ctx.strokeStyle = 'rgba(202, 19, 15, 0.1)';
-            for(let i=0; i<particles.length; i++) {
-                for(let j=i+1; j<particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx*dx+dy*dy);
-                    if(dist < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-
-        window.addEventListener('resize', () => { resize(); init(); });
-        resize();
-        init();
-        animate();
+        });
     }
 });
