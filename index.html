@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Buffalo Six - Equipo de STEM Racing. Rápidos bólidos cruzan México sin perder precisión.">
+    <title>Buffalo Six | Racing Team</title>
+    <link rel="icon" type="image/svg+xml" href="Logo B6 Blanco Sin Fondo.svg">
+    
+    <!-- Fuentes Google Fonts alternativas a Ethnocentric/Formula 1 para visualización inmediata -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="Logo B6 Blanco Sin Fondo.svg" alt="Buffalo Six Logo">
+                <span class="logo-text">BUFFALO SIX</span>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Inicio</a></li>
+                <li><a href="#identity" class="nav-link">Identidad</a></li>
+                <li><a href="#team" class="nav-link">Escudería</a></li>
+                <li><a href="#partners" class="nav-link">Partners</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-text" data-animate="fade-up">
+                <p class="subtitle">STEM RACING TEAM</p>
+                <h1>RÁPIDOS BÓLIDOS CRUZAN MÉXICO<br><span class="highlight">SIN PERDER PRECISIÓN</span></h1>
+                <p class="description">Pasión, energía y estrategia en cada vuelta. Somos la fuerza del búfalo.</p>
+                <a href="#team" class="btn-primary">Conoce al Equipo</a>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Sección Identidad (Sobre Nosotros) -->
+    <section id="identity" class="section identity-section">
+        <div class="container">
+            <div class="split-layout">
+                <div class="text-col" data-animate="slide-right">
+                    <h2 class="section-title">NUESTRA <span class="text-red">ESENCIA</span></h2>
+                    <h3>Consistencia, Adaptabilidad y Funcionalidad.</h3>
+                    <p>"Buffalo" viene de la mascota de nuestro colegio, un símbolo de fuerza con el que nos hemos identificado por años. "Six" simboliza a cada uno de los integrantes como conjunto.</p>
+                    <p>Nuestro nombre evolucionó a <strong>"The Buffalo Six"</strong> por una razón estratégica: evitar los riesgos técnicos de competir primeros por orden alfabético.</p>
+                </div>
+                <div class="visual-col" data-animate="slide-left">
+                    <div class="logo-showcase">
+                        <img src="Logo B6 Blanco Sin Fondo.svg" alt="Buffalo Six Icono" class="floating-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Equipo -->
+    <section id="team" class="section team-section">
+        <div class="container">
+            <div class="section-header center" data-animate="fade-up">
+                <h2 class="section-title">LA <span class="text-red">ESCUDERÍA</span></h2>
+                <p>Cada pieza cuenta. Cada rol es vital para la victoria.</p>
+            </div>
+            
+            <div class="team-grid">
+                <!-- Miembro 1 -->
+                <div class="member-card" data-animate="fade-up">
+                    <div class="card-content">
+                        <div class="role-badge">Design Engineer</div>
+                        <h3>Luis Humberto<br>Montoya Herrera</h3>
+                        <p class="role-desc">Responsable del diseño aerodinámico y estructural del vehículo.</p>
+                    </div>
+                    <div class="card-border"></div>
+                </div>
+
+                <!-- Miembro 2 -->
+                <div class="member-card" data-animate="fade-up" style="transition-delay: 100ms;">
+                    <div class="card-content">
+                        <div class="role-badge">Manufacture Engineer</div>
+                        <h3>Alexter<br>López Agráz</h3>
+                        <p class="role-desc">Encargado de materializar el diseño con precisión milimétrica.</p>
+                    </div>
+                    <div class="card-border"></div>
+                </div>
+
+                <!-- Miembro 3 -->
+                <div class="member-card" data-animate="fade-up" style="transition-delay: 200ms;">
+                    <div class="card-content">
+                        <div class="role-badge">Marketing</div>
+                        <h3>Isaac<br>Quintero Miramontes</h3>
+                        <p class="role-desc">Gestión de imagen, patrocinadores y presencia de marca.</p>
+                    </div>
+                    <div class="card-border"></div>
+                </div>
+
+                <!-- Miembro 4 -->
+                <div class="member-card" data-animate="fade-up">
+                    <div class="card-content">
+                        <div class="role-badge">Finanzas</div>
+                        <h3>Alejandro<br>Chacón Ávila</h3>
+                        <p class="role-desc">Administración de recursos y estrategia financiera del equipo.</p>
+                    </div>
+                    <div class="card-border"></div>
+                </div>
+
+                <!-- Miembro 5 -->
+                <div class="member-card" data-animate="fade-up" style="transition-delay: 100ms;">
+                    <div class="card-content">
+                        <div class="role-badge">Project Manager</div>
+                        <h3>Carlos Andrés<br>Higuera Pérez</h3>
+                        <p class="role-desc">Liderazgo, planificación y coordinación general del proyecto.</p>
+                    </div>
+                    <div class="card-border"></div>
+                </div>
+
+                <!-- Miembro 6 -->
+                <div class="member-card" data-animate="fade-up" style="transition-delay: 200ms;">
+                    <div class="card-content">
+                        <div class="role-badge">Graphic Designer</div>
+                        <h3>Luca Alessandro<br>López Virgen</h3>
+                        <p class="role-desc">Creador de la identidad visual y estética de Buffalo Six.</p>
+                    </div>
+                    <div class="card-border"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Partners -->
+    <footer id="partners" class="footer">
+        <div class="container footer-content">
+            <div class="stem-logo-container">
+                <p class="partnership-text">Compitiendo en</p>
+                <img src="Full-Colour-Black_RGB-1024x476.png" alt="STEM Racing" class="stem-logo">
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="social-links">
+                    <a href="#" class="social-icon">IG</a>
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="#" class="social-icon">LN</a>
+                </div>
+                <p>&copy; 2024 Buffalo Six Racing Team. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
