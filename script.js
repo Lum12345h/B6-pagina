@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     
     // ==========================================
-    // 1. SYSTEM INITIALIZATION (Preloader)
+    // 1. SYSTEM INITIALIZATION (Preloader
     // ==========================================
     const preloader = document.getElementById('preloader');
     const loadingText = document.getElementById('loading-text');
