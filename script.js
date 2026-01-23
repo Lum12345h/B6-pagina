@@ -1,237 +1,237 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. SYSTEM LOADER & SCRAMBLE TEXT ---
+    // ==========================================
+    // 1. SYSTEM INITIALIZATION (Preloader)
+    // ==========================================
     const preloader = document.getElementById('preloader');
-    const scrambleTexts = document.querySelectorAll('.scramble-text');
+    const loadingText = document.getElementById('loading-text');
+    const percentDisplay = document.querySelector('.status-percent');
+    const progressBar = document.querySelector('.loader-bar-fill');
     
-    // Characters for hacker effect
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
-
-    class Scrambler {
-        constructor(el) {
-            this.el = el;
-            this.originalText = el.innerText;
-            this.update = this.update.bind(this);
-        }
+    if (preloader) {
+        let loadProgress = 0;
+        const totalDuration = 1500; // 1.5 seconds loading simulation
+        const intervalTime = 20;
+        const increment = 100 / (totalDuration / intervalTime);
         
-        start() {
-            this.frame = 0;
-            this.queue = [];
-            for (let i = 0; i < this.originalText.length; i++) {
-                const from = this.originalText[i];
-                const to = this.originalText[i];
-                const start = Math.floor(Math.random() * 20);
-                const end = start + Math.floor(Math.random() * 20);
-                this.queue.push({ from, to, start, end });
-            }
-            cancelAnimationFrame(this.frameRequest);
-            this.frame = 0;
-            this.update();
-            return this;
-        }
-        
-        update() {
-            let output = '';
-            let complete = 0;
-            for (let i = 0; i < this.queue.length; i++) {
-                let { from, to, start, end, char } = this.queue[i];
-                if (this.frame >= end) {
-                    complete++;
-                    output += to;
-                } else if (this.frame >= start) {
-                    if (!char || Math.random() < 0.28) {
-                        char = chars[Math.floor(Math.random() * chars.length)];
-                        this.queue[i].char = char;
-                    }
-                    output += `<span class="dud">${char}</span>`;
-                } else {
-                    output += from;
-                }
-            }
-            this.el.innerHTML = output;
-            if (complete === this.queue.length) {
-                // Done
-            } else {
-                this.frameRequest = requestAnimationFrame(this.update);
-                this.frame++;
-            }
-        }
-    }
+        const loadingMessages = ['INITIALIZING', 'LOADING ASSETS', 'CALIBRATING', 'READY'];
 
-    // Initialize Preloader
-    if(preloader) {
-        const bar = document.querySelector('.progress-bar');
-        const percent = document.querySelector('.percentage');
-        let load = 0;
-
-        const interval = setInterval(() => {
-            load += Math.random() * 5;
-            if(load > 100) load = 100;
+        const timer = setInterval(() => {
+            loadProgress += increment;
             
-            if(bar) bar.style.width = `${load}%`;
-            if(percent) percent.innerText = `${Math.floor(load)}%`;
+            // Randomly glitch the text
+            if (Math.random() > 0.8) {
+                loadingText.innerText = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+            }
 
-            if(load === 100) {
-                clearInterval(interval);
-                // Trigger Text Scrambles
-                scrambleTexts.forEach(el => {
-                    new Scrambler(el).start();
-                });
+            if (loadProgress >= 100) {
+                loadProgress = 100;
+                clearInterval(timer);
                 
+                loadingText.innerText = 'SYSTEM READY';
+                percentDisplay.innerText = '100%';
+                progressBar.style.width = '100%';
+
                 setTimeout(() => {
                     preloader.style.opacity = '0';
                     setTimeout(() => {
                         preloader.remove();
-                        document.body.classList.remove('loading');
+                        document.body.classList.remove('loading-state');
+                        triggerIntro();
                     }, 500);
-                }, 800);
+                }, 500);
+            } else {
+                progressBar.style.width = `${loadProgress}%`;
+                percentDisplay.innerText = `${Math.floor(loadProgress)}%`;
             }
-        }, 50);
-    } else {
-        document.body.classList.remove('loading');
+        }, intervalTime);
     }
 
-    // --- 2. CUSTOM CURSOR ---
-    const dot = document.querySelector('.cursor-dot');
-    const outline = document.querySelector('.cursor-outline');
+    function triggerIntro() {
+        const heroReveals = document.querySelectorAll('#hero [data-reveal]');
+        heroReveals.forEach(el => el.classList.add('reveal-active'));
+    }
+
+    // ==========================================
+    // 2. NAVIGATION LOGIC
+    // ==========================================
+    const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-nav');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
     
-    // Check if device supports hover (desktop)
-    if (window.matchMedia("(pointer: fine)").matches) {
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            
-            // Dot follows instantly
-            dot.style.left = `${posX}px`;
-            dot.style.top = `${posY}px`;
-            
-            // Outline follows with lag (handled by CSS transition or simple JS)
-            // Using simple JS for smooth trailing
-            outline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
+    // Scroll Effect
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+    });
 
-        // Interactive Elements Hover
-        const interactives = document.querySelectorAll('a, button, .hamburger, .hotspot, .member-card');
-        interactives.forEach(el => {
-            el.addEventListener('mouseenter', () => outline.classList.add('hovered'));
-            el.addEventListener('mouseleave', () => outline.classList.remove('hovered'));
+    // Mobile Menu Toggle
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
         });
-    } else {
-        if(dot) dot.style.display = 'none';
-        if(outline) outline.style.display = 'none';
+    });
+
+    // ==========================================
+    // 3. WARP SPEED CANVAS
+    // ==========================================
+    const canvas = document.getElementById('warp-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let stars = [];
+        const STAR_COUNT = 150;
+        const SPEED = 2; // Speed factor
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            initStars();
+        }
+
+        class Star {
+            constructor() {
+                this.x = Math.random() * width - width / 2;
+                this.y = Math.random() * height - height / 2;
+                this.z = Math.random() * width; // Depth
+                this.pz = this.z; // Previous Z
+            }
+
+            update() {
+                this.z -= SPEED * 5; // Move closer
+                if (this.z < 1) {
+                    this.z = width;
+                    this.x = Math.random() * width - width / 2;
+                    this.y = Math.random() * height - height / 2;
+                    this.pz = this.z;
+                }
+            }
+
+            draw() {
+                const sx = (this.x / this.z) * width + width / 2;
+                const sy = (this.y / this.z) * height + height / 2;
+
+                const r = (1 - this.z / width) * 2; // Size based on depth
+
+                // Draw trail
+                const px = (this.x / this.pz) * width + width / 2;
+                const py = (this.y / this.pz) * height + height / 2;
+                this.pz = this.z;
+
+                ctx.beginPath();
+                ctx.moveTo(px, py);
+                ctx.lineTo(sx, sy);
+                ctx.strokeStyle = `rgba(255, 255, 255, ${1 - this.z / width})`;
+                ctx.lineWidth = r;
+                ctx.stroke();
+            }
+        }
+
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < STAR_COUNT; i++) stars.push(new Star());
+        }
+
+        function animate() {
+            ctx.fillStyle = 'rgba(24, 23, 23, 0.4)'; // Trails effect
+            ctx.fillRect(0, 0, width, height);
+            
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+        animate();
     }
 
-    // --- 3. SCROLL REVEAL (Intersection Observer) ---
-    const revealElements = document.querySelectorAll('[data-reveal]');
-    const observerConfig = {
-        threshold: 0.1,
+    // ==========================================
+    // 4. SCROLL REVEAL OBSERVER
+    // ==========================================
+    const observerOptions = {
+        threshold: 0.15,
         rootMargin: "0px 0px -50px 0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const delay = entry.target.dataset.delay || 0;
+                const delay = entry.target.getAttribute('data-delay') || 0;
                 setTimeout(() => {
                     entry.target.classList.add('reveal-active');
-                    // Retrigger scramble if inside
-                    const innerScramble = entry.target.querySelector('.scramble-text');
-                    if(innerScramble) new Scrambler(innerScramble).start();
                 }, delay);
                 observer.unobserve(entry.target);
             }
         });
-    }, observerConfig);
+    }, observerOptions);
 
-    revealElements.forEach(el => observer.observe(el));
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
 
-    // --- 4. NAVIGATION LOGIC ---
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobile-nav');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-    const navbar = document.getElementById('navbar');
-
-    if(hamburger) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            
-            if (mobileNav.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
-    }
-
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-
-    // Sticky Nav
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) navbar.style.background = 'rgba(24,23,23,0.95)';
-        else navbar.style.background = 'rgba(24,23,23,0.8)';
-    });
-
-    // --- 5. TECH SECTION INTERACTION (Simple Tabs/Visuals) ---
-    // (Optional: Add click logic for hotspots if detailed info is needed elsewhere)
-    
-    // --- 6. BACKGROUND CANVAS (Simplified Particles) ---
-    const canvas = document.getElementById('bg-canvas');
-    if(canvas) {
-        const ctx = canvas.getContext('2d');
-        let width = window.innerWidth;
-        let height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-
-        const particles = [];
-        const particleCount = 40;
-
-        for(let i=0; i<particleCount; i++){
-            particles.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                size: Math.random() * 2
-            });
-        }
-
-        function animateCanvas() {
-            ctx.clearRect(0,0,width,height);
-            ctx.fillStyle = 'rgba(255,255,255,0.2)';
-            
-            particles.forEach(p => {
-                p.x += p.vx;
-                p.y += p.vy;
-                
-                if(p.x < 0) p.x = width;
-                if(p.x > width) p.x = 0;
-                if(p.y < 0) p.y = height;
-                if(p.y > height) p.y = 0;
-                
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-                ctx.fill();
-            });
-            requestAnimationFrame(animateCanvas);
-        }
+    // ==========================================
+    // 5. MAGNETIC BUTTONS (Desktop Only)
+    // ==========================================
+    if (window.matchMedia("(min-width: 992px)").matches) {
+        const btns = document.querySelectorAll('.magnetic-btn');
         
-        animateCanvas();
-        window.addEventListener('resize', () => {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
+        btns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Move button slightly
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+                // Move inner content slightly more
+                const content = btn.querySelector('.btn-content');
+                if(content) content.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0px, 0px)';
+                const content = btn.querySelector('.btn-content');
+                if(content) content.style.transform = 'translate(0px, 0px)';
+            });
         });
     }
+
+    // ==========================================
+    // 6. TEXT GLITCH EFFECT (Hover)
+    // ==========================================
+    const glitchTexts = document.querySelectorAll('.big-glitch');
+    
+    glitchTexts.forEach(text => {
+        text.addEventListener('mouseover', () => {
+            let original = text.getAttribute('data-text');
+            let iterations = 0;
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            
+            const interval = setInterval(() => {
+                text.innerText = original.split("")
+                    .map((letter, index) => {
+                        if(index < iterations) return original[index];
+                        return letters[Math.floor(Math.random() * 26)];
+                    })
+                    .join("");
+                
+                if(iterations >= original.length) clearInterval(interval);
+                iterations += 1 / 3;
+            }, 30);
+        });
+    });
+
+    console.log("%c BUFFALO SIX 2026 %c SYSTEM ONLINE ", "background:#CA130F; color:#fff; padding:5px;", "background:#000; color:#fff; padding:5px;");
 });
