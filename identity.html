@@ -10,13 +10,12 @@
     <title>Identidad | Buffalo Six</title>
     <link rel="icon" type="image/svg+xml" href="Logo B6 Blanco Sin Fondo.svg" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Orbitron:wght@400;600;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="subpage-body loading-state">
-    <!-- Preloader arreglado -->
     <div id="preloader">
       <div class="loader-container">
         <div class="loader-status">
@@ -40,10 +39,19 @@
         </a>
         <div class="nav-right">
           <ul class="nav-menu">
-            <!-- Spans añadidos para evitar el empalme visual -->
             <li class="nav-item">
               <a href="index.html" class="nav-link" data-text="INICIO"
                 ><span>INICIO</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="history.html" class="nav-link" data-text="HISTORIA"
+                ><span>HISTORIA</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="stem.html" class="nav-link" data-text="STEM RACING"
+                ><span>STEM RACING</span></a
               >
             </li>
             <li class="nav-item">
@@ -68,6 +76,15 @@
               >
             </li>
           </ul>
+
+          <a
+            href="https://stemracing.mx/"
+            target="_blank"
+            class="nav-stem-logo"
+          >
+            <img src="Full-Colour-Black_RGB-1024x476.png" alt="STEM Racing" />
+          </a>
+
           <div class="hamburger-wrap">
             <div class="hamburger" id="hamburger">
               <span class="line line-1"></span>
@@ -83,21 +100,26 @@
       <div class="mobile-menu-content">
         <nav class="mobile-nav-links">
           <a href="index.html" class="mobile-link"><span>01.</span> INICIO</a>
+          <a href="history.html" class="mobile-link"
+            ><span>02.</span> HISTORIA</a
+          >
+          <a href="stem.html" class="mobile-link"
+            ><span>03.</span> STEM RACING</a
+          >
           <a href="identity.html" class="mobile-link active"
-            ><span>02.</span> IDENTIDAD</a
+            ><span>04.</span> IDENTIDAD</a
           >
           <a href="index.html#team" class="mobile-link"
-            ><span>03.</span> ESCUDERÍA</a
+            ><span>05.</span> ESCUDERÍA</a
           >
           <a href="index.html#sponsors" class="mobile-link"
-            ><span>04.</span> PATROCINIO</a
+            ><span>06.</span> PATROCINIO</a
           >
         </nav>
       </div>
     </div>
 
     <main>
-      <!-- Identity Header -->
       <header class="section subpage-header">
         <div class="container">
           <div class="header-content center">
@@ -116,20 +138,21 @@
         <div class="header-grid-lines"></div>
       </header>
 
-      <!-- Brand Story -->
       <section class="section brand-story">
         <div class="container">
           <div class="story-layout">
             <div class="story-text" data-reveal="fade-right">
-              <h2 class="section-title">EL ORIGEN</h2>
+              <h2 class="section-title">
+                EL ORIGEN DEL <span class="text-red">BÚFALO</span>
+              </h2>
               <div class="title-separator"></div>
-              <p class="text-justify">
+              <p class="text-justify" style="margin-top: 20px">
                 "Buffalo" no es una elección aleatoria. Proviene de la mascota
                 de nuestro colegio, un símbolo de fuerza bruta, resistencia y
                 determinación inquebrantable. Es la base sobre la que
                 construimos nuestro carácter.
               </p>
-              <p class="text-justify">
+              <p class="text-justify" style="margin-top: 15px">
                 "Six" representa la unidad. Seis integrantes, seis mentes, un
                 solo motor. El nombre surgió por casualidad el día del cierre de
                 inscripciones para evitar competir primeros por orden
@@ -139,7 +162,6 @@
               </p>
               <blockquote class="brand-quote">"FASTER THAN EVER"</blockquote>
             </div>
-            <!-- Legacy box removido, reemplazado por logo brillante -->
             <div class="story-visual center" data-reveal="fade-left">
               <div class="brand-showcase">
                 <div class="glow-circle"></div>
@@ -154,14 +176,12 @@
         </div>
       </section>
 
-      <!-- Construction Grid -->
       <section class="section construction-section">
         <div class="container">
           <h2 class="section-title center">
             CONSTRUCCIÓN <span class="text-red">TÉCNICA</span>
           </h2>
           <div class="construction-display" data-reveal="zoom-in">
-            <!-- SVG Complex Grid Simulation -->
             <svg viewBox="0 0 800 400" class="construction-svg">
               <defs>
                 <pattern
@@ -248,14 +268,12 @@
         </div>
       </section>
 
-      <!-- Color Palette -->
       <section class="section color-section">
         <div class="container">
           <h2 class="section-title center">
             SISTEMA <span class="text-red">CROMÁTICO</span>
           </h2>
           <div class="color-grid-expanded">
-            <!-- Black -->
             <div class="color-item" data-reveal="fade-up">
               <div class="swatch" style="background-color: #181717">
                 <span class="hex">#181717</span>
@@ -270,7 +288,6 @@
               </div>
             </div>
 
-            <!-- Red -->
             <div class="color-item" data-reveal="fade-up" data-delay="100">
               <div class="swatch" style="background-color: #ca130f">
                 <span class="hex">#CA130F</span>
@@ -285,7 +302,6 @@
               </div>
             </div>
 
-            <!-- White -->
             <div class="color-item" data-reveal="fade-up" data-delay="200">
               <div
                 class="swatch"
@@ -303,7 +319,6 @@
               </div>
             </div>
 
-            <!-- Gray -->
             <div class="color-item" data-reveal="fade-up" data-delay="300">
               <div class="swatch" style="background-color: #808080">
                 <span class="hex">#808080</span>
@@ -318,13 +333,12 @@
         </div>
       </section>
 
-      <!-- Typography -->
       <section class="section typo-section">
         <div class="container">
           <div class="split-layout">
             <div class="typo-visual" data-reveal="fade-right">
               <div class="font-preview display-font">Aa</div>
-              <div class="font-name">ORBITRON / ETHNOCENTRIC</div>
+              <div class="font-name">ETHNOCENTRIC</div>
               <p class="font-use">TITULARES Y LOGOTIPO</p>
             </div>
             <div class="typo-details" data-reveal="fade-left">
@@ -345,7 +359,6 @@
         </div>
       </section>
 
-      <!-- Brand Elements -->
       <section class="section brand-assets">
         <div class="container">
           <h2 class="section-title center">ELEMENTOS GRÁFICOS</h2>
@@ -375,7 +388,6 @@
         </div>
       </section>
 
-      <!-- Footer -->
       <footer
         class="footer-simple"
         style="padding: 40px 0; border-top: 1px solid #222"

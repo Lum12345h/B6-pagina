@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Historia | Buffalo Six</title>
+    <link rel="icon" type="image/svg+xml" href="Logo B6 Blanco Sin Fondo.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="subpage-body loading-state">
+    <div id="preloader">
+      <div class="loader-container">
+        <div class="loader-status">
+          <span class="status-text" id="loading-text">LOADING HISTORY</span>
+          <span class="status-percent">0%</span>
+        </div>
+        <div class="loader-bar-bg"><div class="loader-bar-fill"></div></div>
+      </div>
+    </div>
+
+    <canvas id="warp-canvas"></canvas>
+    <div class="noise-overlay"></div>
+
+    <nav class="navbar" id="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="brand-logo">
+          <img src="Logo B6 Blanco Sin Fondo.svg" alt="Logo" class="nav-img" />
+          <span class="brand-name">BUFFALO SIX</span>
+        </a>
+        <div class="nav-right">
+          <ul class="nav-menu">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link" data-text="INICIO"
+                ><span>INICIO</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="history.html"
+                class="nav-link active"
+                data-text="HISTORIA"
+                ><span>HISTORIA</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="stem.html" class="nav-link" data-text="STEM RACING"
+                ><span>STEM RACING</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="identity.html" class="nav-link" data-text="IDENTIDAD"
+                ><span>IDENTIDAD</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="index.html#team" class="nav-link" data-text="ESCUDERÍA"
+                ><span>ESCUDERÍA</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="index.html#sponsors"
+                class="nav-link"
+                data-text="PATROCINIO"
+                ><span>PATROCINIO</span></a
+              >
+            </li>
+          </ul>
+          <a
+            href="https://stemracing.mx/"
+            target="_blank"
+            class="nav-stem-logo"
+          >
+            <img src="Full-Colour-Black_RGB-1024x476.png" alt="STEM Racing" />
+          </a>
+          <div class="hamburger-wrap">
+            <div class="hamburger" id="hamburger">
+              <span class="line line-1"></span>
+              <span class="line line-2"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="mobile-menu-overlay" id="mobile-nav">
+      <div class="menu-backdrop"></div>
+      <div class="mobile-menu-content">
+        <nav class="mobile-nav-links">
+          <a href="index.html" class="mobile-link"><span>01.</span> INICIO</a>
+          <a href="history.html" class="mobile-link active"
+            ><span>02.</span> HISTORIA</a
+          >
+          <a href="stem.html" class="mobile-link"
+            ><span>03.</span> STEM RACING</a
+          >
+          <a href="identity.html" class="mobile-link"
+            ><span>04.</span> IDENTIDAD</a
+          >
+          <a href="index.html#team" class="mobile-link"
+            ><span>05.</span> ESCUDERÍA</a
+          >
+          <a href="index.html#sponsors" class="mobile-link"
+            ><span>06.</span> PATROCINIO</a
+          >
+        </nav>
+      </div>
+    </div>
+
+    <main>
+      <header class="section subpage-header">
+        <div class="container">
+          <div class="header-content center">
+            <span class="page-tag" data-reveal="fade-down">LEGADO</span>
+            <h1 class="page-title big-glitch" data-text="NUESTRA HISTORIA">
+              NUESTRA HISTORIA
+            </h1>
+            <p class="page-lead" data-reveal="fade-up">
+              Los pioneros del Colegio Altamira. Donde la visión se encontró con
+              la pista.
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <section class="section brand-story">
+        <div class="container">
+          <div class="story-layout">
+            <div class="story-text" data-reveal="fade-right">
+              <h2 class="section-title">
+                PRIMERA <span class="text-red">GENERACIÓN</span>
+              </h2>
+              <div class="title-separator"></div>
+              <p class="text-justify" style="margin-top: 20px">
+                En 2024, un grupo de seis mentes brillantes asumió el reto de
+                convertirse en la primera escudería en la historia del Colegio
+                Altamira (Guadalajara) en competir en el desafío internacional
+                STEM Racing (Categoría Desarrollo).
+              </p>
+              <p class="text-justify" style="margin-top: 15px">
+                Establecieron los cimientos de excelencia, trabajo en equipo y
+                estrategia corporativa que hoy define el ADN de Buffalo Six. Su
+                esfuerzo incansable no pasó desapercibido, dejando una huella
+                imborrable en la competencia.
+              </p>
+
+              <div
+                class="award-box"
+                style="
+                  background: #111;
+                  border: 1px solid var(--color-red);
+                  padding: 20px;
+                  margin-top: 30px;
+                  border-radius: 5px;
+                "
+              >
+                <h3
+                  style="
+                    font-family: var(--font-display);
+                    color: var(--color-red);
+                    margin-bottom: 10px;
+                    font-size: 1rem;
+                  "
+                >
+                  🏆 PREMIO NACIONAL
+                </h3>
+                <p style="font-weight: 600; font-size: 1.1rem; color: #fff">
+                  Mejor Marketing y Patrocinios 2025
+                </p>
+              </div>
+            </div>
+            <div class="story-visual center" data-reveal="fade-left">
+              <div class="brand-showcase">
+                <div class="glow-circle"></div>
+                <img
+                  src="Logo B6 Blanco Sin Fondo.svg"
+                  alt="Buffalo Six Logo"
+                  class="hero-logo-large"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section team-section" style="background: #080808">
+        <div class="container">
+          <div class="section-header center">
+            <span class="section-subtitle">FOUNDERS 2024-2025</span>
+            <h2 class="section-title">
+              LOS <span class="text-red">PIONEROS</span>
+            </h2>
+          </div>
+
+          <div class="team-grid">
+            <article class="member-card" data-reveal="fade-up">
+              <div class="member-visual">
+                <img
+                  src="Adrian_velazquez_imagen.png"
+                  alt="Adrián Velázquez"
+                  class="member-img"
+                />
+              </div>
+              <div class="member-content">
+                <span class="member-role">GRAPHIC DESIGNER</span>
+                <h3 class="member-name">ADRIÁN<br />VELÁZQUEZ</h3>
+                <p class="member-bio">
+                  Arquitecto de la identidad visual que cimentó la marca B6.
+                </p>
+              </div>
+            </article>
+
+            <article class="member-card" data-reveal="fade-up" data-delay="100">
+              <div class="member-visual">
+                <img
+                  src="Oscar_hernandez_imagen.png"
+                  alt="Oscar Hernández"
+                  class="member-img"
+                />
+              </div>
+              <div class="member-content">
+                <span class="member-role">MANUFACTURING ENGINEER</span>
+                <h3 class="member-name">OSCAR<br />HERNÁNDEZ</h3>
+                <p class="member-bio">
+                  Transformó los diseños virtuales en el primer chasis físico
+                  del equipo.
+                </p>
+              </div>
+            </article>
+
+            <article class="member-card" data-reveal="fade-up" data-delay="200">
+              <div class="member-visual">
+                <img
+                  src="Miguel_velazquez_imagen.png"
+                  alt="Miguel Velázquez"
+                  class="member-img"
+                />
+              </div>
+              <div class="member-content">
+                <span class="member-role">DESIGN ENGINEER</span>
+                <h3 class="member-name">MIGUEL<br />VELÁZQUEZ</h3>
+                <p class="member-bio">
+                  El creador del primer concepto aerodinámico de Buffalo Six en
+                  software CAD.
+                </p>
+              </div>
+            </article>
+
+            <article class="member-card" data-reveal="fade-up" data-delay="0">
+              <div class="member-visual">
+                <img
+                  src="Iñaki_flores_imagen.png"
+                  alt="Iñaki Flores"
+                  class="member-img"
+                />
+              </div>
+              <div class="member-content">
+                <span class="member-role">PROJECT MANAGER</span>
+                <h3 class="member-name">IÑAKI<br />FLORES</h3>
+                <p class="member-bio">
+                  Líder estratégico que orquestó la sinergia y tiempos de la
+                  generación fundadora.
+                </p>
+              </div>
+            </article>
+
+            <article class="member-card" data-reveal="fade-up" data-delay="100">
+              <div class="member-visual">
+                <img
+                  src="Javier_villanueva_imagen.png"
+                  alt="Javier Villanueva"
+                  class="member-img"
+                />
+              </div>
+              <div class="member-content">
+                <span class="member-role">MARKETING MANAGER</span>
+                <h3 class="member-name">JAVIER<br />VILLANUEVA</h3>
+                <p class="member-bio">
+                  Mente maestra detrás del galardonado plan de marketing 2025.
+                </p>
+              </div>
+            </article>
+
+            <article class="member-card" data-reveal="fade-up" data-delay="200">
+              <div class="member-visual">
+                <img
+                  src="Patricio_martinez_imagen.png"
+                  alt="Patricio Martinez"
+                  class="member-img"
+                />
+              </div>
+              <div class="member-content">
+                <span class="member-role">FINANCE MANAGER</span>
+                <h3 class="member-name">PATRICIO<br />MARTINEZ</h3>
+                <p class="member-bio">
+                  Aseguró los recursos que hicieron posible el sueño de la
+                  primera competencia.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        class="footer-simple"
+        style="padding: 40px 0; border-top: 1px solid #222"
+      >
+        <div class="container center">
+          <p>&copy; 2026 BUFFALO SIX RACING TEAM. LEGACY MODULE.</p>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

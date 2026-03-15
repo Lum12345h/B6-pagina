@@ -9,30 +9,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
       name="description"
-      content="Buffalo Six Racing Team - Temporada 2026. Ingeniería de precisión, velocidad y pasión. F1 in Schools México."
+      content="Buffalo Six Racing Team - Temporada 2026. Ingeniería de precisión, velocidad y pasión."
     />
-    <meta
-      name="keywords"
-      content="F1 in Schools, STEM, Racing, Buffalo Six, Ingeniería, Diseño, Patrocinio, México"
-    />
-    <meta name="author" content="Buffalo Six Engineering Team" />
     <meta name="theme-color" content="#181717" />
-
     <title>Buffalo Six | Season 2026</title>
-
     <link rel="icon" type="image/svg+xml" href="Logo B6 Blanco Sin Fondo.svg" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&family=Orbitron:wght@400;500;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="loading-state">
-    <!-- Preloader Avanzado -->
     <div id="preloader">
       <div class="loader-container">
         <div class="loader-logo-wrap">
@@ -58,12 +48,10 @@
       </div>
     </div>
 
-    <!-- Fondo Interactivo -->
     <canvas id="warp-canvas"></canvas>
     <div class="noise-overlay"></div>
     <div class="vignette"></div>
 
-    <!-- Navegación -->
     <nav class="navbar" id="navbar">
       <div class="container nav-container">
         <a href="index.html" class="brand-logo">
@@ -80,10 +68,19 @@
 
         <div class="nav-right">
           <ul class="nav-menu">
-            <!-- Textos envueltos en span para el efecto -->
             <li class="nav-item">
               <a href="index.html" class="nav-link active" data-text="INICIO"
                 ><span>INICIO</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="history.html" class="nav-link" data-text="HISTORIA"
+                ><span>HISTORIA</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="stem.html" class="nav-link" data-text="STEM RACING"
+                ><span>STEM RACING</span></a
               >
             </li>
             <li class="nav-item">
@@ -103,6 +100,14 @@
             </li>
           </ul>
 
+          <a
+            href="https://stemracing.mx/"
+            target="_blank"
+            class="nav-stem-logo"
+          >
+            <img src="Full-Colour-Black_RGB-1024x476.png" alt="STEM Racing" />
+          </a>
+
           <div class="hamburger-wrap">
             <div class="hamburger" id="hamburger">
               <span class="line line-1"></span>
@@ -113,18 +118,25 @@
       </div>
     </nav>
 
-    <!-- Menú Móvil -->
     <div class="mobile-menu-overlay" id="mobile-nav">
       <div class="menu-backdrop"></div>
       <div class="mobile-menu-content">
         <nav class="mobile-nav-links">
-          <a href="index.html" class="mobile-link"><span>01.</span> INICIO</a>
-          <a href="identity.html" class="mobile-link"
-            ><span>02.</span> IDENTIDAD</a
+          <a href="index.html" class="mobile-link active"
+            ><span>01.</span> INICIO</a
           >
-          <a href="#team" class="mobile-link"><span>03.</span> ESCUDERÍA</a>
+          <a href="history.html" class="mobile-link"
+            ><span>02.</span> HISTORIA</a
+          >
+          <a href="stem.html" class="mobile-link"
+            ><span>03.</span> STEM RACING</a
+          >
+          <a href="identity.html" class="mobile-link"
+            ><span>04.</span> IDENTIDAD</a
+          >
+          <a href="#team" class="mobile-link"><span>05.</span> ESCUDERÍA</a>
           <a href="#sponsors" class="mobile-link"
-            ><span>04.</span> PATROCINIO</a
+            ><span>06.</span> PATROCINIO</a
           >
         </nav>
         <div class="mobile-menu-footer">
@@ -138,7 +150,6 @@
     </div>
 
     <main id="main-content">
-      <!-- Hero Section -->
       <header id="hero" class="section hero-section">
         <div class="container hero-container">
           <div class="hero-text-content">
@@ -172,13 +183,9 @@
                   >NUESTRO ADN <i class="arrow-right">→</i></span
                 >
               </a>
-              <a
-                href="https://stemracing.mx/"
-                target="_blank"
-                class="btn btn-glass magnetic-btn"
-              >
+              <a href="stem.html" class="btn btn-glass magnetic-btn">
                 <span class="btn-content"
-                  >STEM RACING MX <i class="external-icon">↗</i></span
+                  >DESCUBRE EL RETO <i class="external-icon">↗</i></span
                 >
               </a>
             </div>
@@ -196,7 +203,85 @@
         </div>
       </header>
 
-      <!-- Stats / Introduction -->
+      <section class="section current-sponsors-section">
+        <div class="container center">
+          <span class="section-subtitle" data-reveal="fade-up">POWERED BY</span>
+          <h2 class="section-title" data-reveal="fade-up" data-delay="100">
+            THE BUFFALO SIX <span class="text-red">SPONSORS</span>
+          </h2>
+
+          <div class="sponsors-display">
+            <div
+              class="sponsor-plate main-sponsor"
+              data-reveal="zoom-in"
+              data-delay="200"
+            >
+              <img src="logo_xerox_vectorizado.svg" alt="Xerox" />
+            </div>
+
+            <div
+              class="secondary-sponsors"
+              data-reveal="fade-up"
+              data-delay="300"
+            >
+              <div class="sponsor-plate">
+                <img src="logo_cauda_vectorizado.svg" alt="Cauda" />
+              </div>
+              <div class="sponsor-plate">
+                <img src="logo_hgr_vectorizado.svg" alt="HGR" />
+              </div>
+              <div class="sponsor-plate">
+                <img src="logo_radiobridge_vectorizado.svg" alt="RadioBridge" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section brief-stem-section">
+        <div class="container">
+          <div class="split-layout">
+            <div class="stem-brief-text" data-reveal="fade-right">
+              <h2 class="section-title">
+                ¿QUÉ ES <span class="text-red">STEM RACING?</span>
+              </h2>
+              <p class="text-justify" style="margin-top: 20px">
+                Funcionamos exactamente como una escudería de Fórmula 1. Somos
+                un equipo con 6 roles esenciales dedicados a diseñar, fabricar y
+                correr un monoplaza a escala.
+              </p>
+              <p class="text-justify" style="margin-top: 15px">
+                El auto es propulsado por un tanque de CO2 en una pista de 20
+                metros, alcanzando velocidades de hasta 70 km/h. Para lograr
+                esto, empleamos herramientas de grado industrial, resolvemos la
+                aerodinámica con CFD y FEA, y gestionamos el proyecto mediante
+                sólidas estrategias de negocio.
+              </p>
+              <a href="stem.html" class="btn btn-glass mt-medium magnetic-btn">
+                <span class="btn-content">SABER MÁS</span>
+              </a>
+            </div>
+            <div class="stem-brief-visual center" data-reveal="fade-left">
+              <img
+                src="Full-Colour-Black_RGB-1024x476.png"
+                alt="STEM Racing Mexico"
+                style="width: 100%; max-width: 400px; margin: 0 auto 30px auto"
+              />
+              <h3
+                class="big-glitch"
+                style="
+                  font-family: var(--font-display);
+                  font-size: 2rem;
+                  color: var(--color-red);
+                "
+              >
+                DISEÑA. CONSTRUYE. CORRE.
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section stats-ticker-section">
         <div class="ticker-wrap">
           <div class="ticker">
@@ -218,14 +303,13 @@
         </div>
       </section>
 
-      <!-- Team Section -->
       <section id="team" class="section team-section">
         <div class="bg-pattern-dots"></div>
         <div class="container">
           <div class="section-header center">
-            <span class="section-subtitle">NUESTRA FUERZA</span>
+            <span class="section-subtitle">TEMPORADA 2026</span>
             <h2 class="section-title">
-              LA <span class="text-red">ESCUDERÍA</span>
+              LA <span class="text-red">ESCUDERÍA</span> ACTUAL
             </h2>
             <p class="section-desc">Seis mentes. Un objetivo.</p>
           </div>
@@ -339,51 +423,15 @@
               </div>
             </article>
           </div>
-        </div>
-      </section>
 
-      <!-- Roadmap / Timeline -->
-      <section class="section roadmap-section">
-        <div class="container">
-          <h2 class="section-title center mb-large">
-            ROADMAP <span class="text-red">2026</span>
-          </h2>
-          <div class="timeline">
-            <div class="timeline-item" data-reveal="fade-left">
-              <div class="timeline-content">
-                <span class="phase">FASE 1</span>
-                <h3>CONFORMACIÓN</h3>
-                <p>Definición de roles, identidad y planeación estratégica.</p>
-              </div>
-            </div>
-            <div class="timeline-item" data-reveal="fade-right">
-              <div class="timeline-content">
-                <span class="phase">FASE 2</span>
-                <h3>DESARROLLO</h3>
-                <p>Diseño CAD, simulaciones CFD y búsqueda de patrocinios.</p>
-              </div>
-            </div>
-            <div class="timeline-item" data-reveal="fade-left">
-              <div class="timeline-content">
-                <span class="phase">FASE 3</span>
-                <h3>MANUFACTURA</h3>
-                <p>
-                  Mecanizado del auto, pruebas de túnel de viento y ensamble.
-                </p>
-              </div>
-            </div>
-            <div class="timeline-item highlight" data-reveal="fade-right">
-              <div class="timeline-content">
-                <span class="phase">FASE 4</span>
-                <h3>COMPETENCIA</h3>
-                <p>Regional y Nacional. El momento de la verdad en la pista.</p>
-              </div>
-            </div>
+          <div class="center mt-medium" data-reveal="fade-up">
+            <a href="history.html" class="btn btn-glass magnetic-btn">
+              <span class="btn-content">CONOCE NUESTRA HISTORIA</span>
+            </a>
           </div>
         </div>
       </section>
 
-      <!-- Sponsorship Section -->
       <section id="sponsors" class="section sponsorship-section">
         <div class="container">
           <div class="sponsor-layout-full">
@@ -411,7 +459,6 @@
             </div>
 
             <div class="packages-grid">
-              <!-- Plata -->
               <div
                 class="package-card package-plata"
                 data-reveal="fade-up"
@@ -427,7 +474,6 @@
                 </ul>
               </div>
 
-              <!-- Oro -->
               <div
                 class="package-card package-oro"
                 data-reveal="fade-up"
@@ -443,7 +489,6 @@
                 </ul>
               </div>
 
-              <!-- Diamante -->
               <div
                 class="package-card package-diamante"
                 data-reveal="fade-up"
@@ -461,7 +506,6 @@
                 </ul>
               </div>
 
-              <!-- Platino -->
               <div
                 class="package-card package-platino"
                 data-reveal="fade-up"
@@ -481,7 +525,6 @@
                 </ul>
               </div>
 
-              <!-- VIP -->
               <div
                 class="package-card package-vip"
                 data-reveal="fade-up"
@@ -506,7 +549,6 @@
         </div>
       </section>
 
-      <!-- Footer -->
       <footer class="footer">
         <div class="container">
           <div class="footer-top">
@@ -522,8 +564,9 @@
               <h4>NAVEGACIÓN</h4>
               <ul>
                 <li><a href="index.html">Inicio</a></li>
+                <li><a href="history.html">Historia</a></li>
+                <li><a href="stem.html">STEM Racing</a></li>
                 <li><a href="identity.html">Identidad</a></li>
-                <li><a href="#team">Equipo</a></li>
                 <li><a href="#sponsors">Patrocinio</a></li>
               </ul>
             </div>
@@ -541,11 +584,7 @@
               >
               <p>Altamira, Guadalajara, MX.</p>
               <div class="social-icons-footer">
-                <a
-                  href="https://instagram.com/f1buffalosix"
-                  target="_blank"
-                  aria-label="Instagram"
-                >
+                <a href="https://instagram.com/f1buffalosix" target="_blank">
                   <svg viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
@@ -556,7 +595,6 @@
                 <a
                   href="https://www.facebook.com/profile.php?id=61553670977396"
                   target="_blank"
-                  aria-label="Facebook"
                 >
                   <svg viewBox="0 0 24 24">
                     <path
@@ -568,7 +606,6 @@
                 <a
                   href="https://www.linkedin.com/in/buffalo-six-racing-team/?originalSubdomain=mx"
                   target="_blank"
-                  aria-label="LinkedIn"
                 >
                   <svg viewBox="0 0 24 24">
                     <path
@@ -577,11 +614,7 @@
                     />
                   </svg>
                 </a>
-                <a
-                  href="https://www.tiktok.com/@f1buffalosix"
-                  target="_blank"
-                  aria-label="TikTok"
-                >
+                <a href="https://www.tiktok.com/@f1buffalosix" target="_blank">
                   <svg viewBox="0 0 24 24">
                     <path
                       fill="currentColor"
